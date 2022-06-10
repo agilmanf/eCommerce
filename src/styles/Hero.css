@@ -2,3 +2,55 @@
   background-color: var(--base-color);
   height: calc(100vh - 66px);
 }
+
+#hero .container {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  top: -20px;
+}
+
+#hero aside {
+  width: 50%;
+}
+
+#hero article {
+  width: 50%;
+}
+
+#hero h1 {
+  font-size: 3.5em;
+  text-transform: none;
+  font-weight: 800;
+}
+
+#hero span {
+  color: rgb(36, 36, 36);
+}
+
+@media only screen and (max-width: 768px) {
+  #hero .container {
+    flex-direction: column-reverse;
+    width: 100%;
+    padding: 0 50px;
+  }
+
+  #hero aside {
+    width: 100%;
+    position: absolute;
+    opacity: 0.3;
+    /* display: none; */
+  }
+
+  #hero article {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  #hero h1 {
+    font-size: 3em;
+  }
+}

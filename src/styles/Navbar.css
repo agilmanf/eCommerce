@@ -1,6 +1,7 @@
 nav {
   background-color: var(--base-color);
   padding: 15px 0;
+  color: rgb(46, 46, 46);
 }
 
 nav .container {
@@ -11,7 +12,6 @@ nav .container {
 }
 
 nav .brand {
-  color: var(--primary-color);
   font-family: "Pacifico", cursive;
   font-size: 1.3em;
   text-shadow: 1px 1px 1px rgba(94, 69, 50, 0.425);
@@ -35,4 +35,8 @@ nav .brand {
 
 .navigasi li:active {
   transform: scale(1);
+}
+
+.navigasi li ion-icon {
+  color: rgb(46, 46, 46);
 }

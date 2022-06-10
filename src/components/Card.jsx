@@ -1,46 +1,43 @@
 import React from "react";
+import { useDispatch } from "react-redux";
+import { addCartItem } from "../redux/actions/cart.action";
 import "../styles/Card.css";
 
-function Card() {
-  const data = {
-    id: 1,
-    name: "MINISO Storage Box Organizer",
-    seller: "MINISOSO",
-    prices: {
-      actualPrice: 98000,
-      discountPrice: 72000,
-      isDiscount: true,
-    },
-    stock: 12,
-    image:
-      "https://images.tokopedia.net/img/cache/300-square/VqbcmM/2021/11/12/896f4efd-59a0-4253-b965-abaf5df34a5c.jpg.webp",
-  };
+function Card({ data }) {
+  const dispatch = useDispatch();
 
   return (
     <div className="card">
+      {data.stock === 0 ? (
+        <div className="card-overlay">
+          <h3>Stok Habis</h3>
+        </div>
+      ) : (
+        ""
+      )}
       <div className="card-image">
         <img src={data.image} alt={data.name} />
       </div>
       <div className="card-details">
         <h4 className="card-name">{data.name}</h4>
-        <div>
+        <div className="card-price-section">
           {data.prices.isDiscount ? (
             <>
-              <span className="card-price">Rp {data.prices.discountPrice}</span>
+              <span className="card-price">Rp{data.prices.discountPrice}</span>
               <span className="card-discount">
-                Rp. {data.prices.actualPrice}
+                Rp.{data.prices.actualPrice}
               </span>
             </>
           ) : (
-            <span className="card-price">Rp {data.prices.actualPrice}</span>
+            <span className="card-price">Rp{data.prices.actualPrice}</span>
           )}
         </div>
         <div className="card-footer">
           <div>
             <p className="card-seller">{data.seller}</p>
-            <p className="card-stock">Tersisa {data.stock}</p>
+            <p className="card-stock">Stock {data.stock}</p>
           </div>
-          <button>
+          <button onClick={() => dispatch(addCartItem(data))}>
             <ion-icon name="bag-add"></ion-icon>
           </button>
         </div>

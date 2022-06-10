@@ -1,26 +1,26 @@
 import axios from "axios";
 
-export const GET_ITEMS = "GET_ITEMS";
+export const GET_PRODUCTS = "GET_PRODUCTS";
 
-export const getItems = () => {
+export const getProducts = () => {
   return (dispatch) => {
     dispatch({
-      type: GET_ITEMS,
+      type: GET_PRODUCTS,
       payload: [],
     });
 
     axios
-      .get("")
+      .get("https://my-json-server.typicode.com/agilmanf/eCommerce/products")
       .then((res) => {
         dispatch({
-          type: GET_ITEMS,
-          payload: res,
+          type: GET_PRODUCTS,
+          payload: res.data,
         });
       })
       .catch((err) => {
         console.log(err);
         dispatch({
-          type: GET_ITEMS,
+          type: GET_PRODUCTS,
           payload: [],
         });
       });
